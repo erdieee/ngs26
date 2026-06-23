@@ -404,53 +404,49 @@
 </div>
 <section id="solution-representation">
 <h2>Solution Representation<a class="headerlink" href="#solution-representation" title="Link to this heading">#</a></h2>
-<p>Model exterior Helmholtz problem:</p>
+<p>Model interior Helmholtz problem:</p>
 <div class="math notranslate nohighlight">
 \[
-  -\Delta u - \kappa^2 u = 0 \quad \text{in } \Omega,
+  \Delta u + \kappa^2 u = 0 \quad \text{in } \Omega,
   \qquad
   u = g \quad \text{on } \Gamma,
 \]</div>
-<p>with the Sommerfeld radiation condition at infinity. The outgoing fundamental solution satisfies</p>
+<p>The outgoing fundamental solution used in the layer potentials satisfies</p>
 <div class="math notranslate nohighlight">
 \[
-  (-\Delta_x - \kappa^2)G_\kappa(x,y) = \delta_y,
+  (\Delta_x + \kappa^2)G_\kappa(x,y) = \delta_y,
   \qquad
   G_\kappa(x,y) = \frac{e^{i\kappa |x-y|}}{4\pi |x-y|}.
 \]</div>
-<p>Green’s representation formula expresses the field through boundary data only:</p>
+<p>BEM represents the solution by a layer potential with an unknown boundary density. For the single-layer ansatz in the domain,</p>
+<div class="math notranslate nohighlight">
+\[
+  u(x) = (\widetilde V\rho)(x)
+  = \int_\Gamma G_\kappa(x,y)\,\rho(y)\,d\sigma_y,
+  \qquad
+  x \notin \Gamma.
+\]</div>
+<p>In a direct formulation, the densities are the physical boundary traces,</p>
+<div class="math notranslate nohighlight">
+\[
+  \mu = u|_\Gamma,
+  \qquad
+  \rho = \partial_n u|_\Gamma.
+\]</div>
+<p>The combined representation is</p>
 <div class="math notranslate nohighlight">
 \[
   u(x) = \int_\Gamma
   \left(
-    G_\kappa(x,y)\,\partial_{n_y}u(y)
-    - \frac{\partial G_\kappa(x,y)}{\partial n_y}\,u(y)
-  \right) d\sigma_y,
-  \qquad x \notin \Gamma.
+    \frac{\partial G_\kappa(x,y)}{\partial n_y}\,\mu(y)
+    - G_\kappa(x,y)\,\rho(y)
+  \right) d\sigma_y.
 \]</div>
-<p>BEM replaces the unknown boundary data by boundary densities and chooses a layer-potential ansatz.</p>
-<p>Single-layer potential:</p>
-<div class="math notranslate nohighlight">
-\[
-  (V\rho)(x) = \int_\Gamma G_\kappa(x,y)\,\rho(y)\,d\sigma_y.
-\]</div>
-<p>Double-layer potential:</p>
-<div class="math notranslate nohighlight">
-\[
-  (K\mu)(x) = \int_\Gamma
-  \frac{\partial G_\kappa(x,y)}{\partial n_y}\,\mu(y)\,d\sigma_y.
-\]</div>
-<p>For example, with a single-layer ansatz <span class="math notranslate nohighlight">\(u = V\rho\)</span>, the Dirichlet condition gives the boundary integral equation</p>
+<p>For the single-layer case, taking the boundary trace gives the boundary integral equation for the density:</p>
 <div class="math notranslate nohighlight">
 \[
   V\rho = g \quad \text{on } \Gamma.
 \]</div>
-<p>With a double-layer ansatz, the trace jump gives an equation of the form</p>
-<div class="math notranslate nohighlight">
-\[
-  \left(\pm \frac12 I + K\right)\mu = g \quad \text{on } \Gamma,
-\]</div>
-<p>where the sign depends on the interior/exterior trace convention. The numerical unknown is the boundary density; after solving for it, the same potential formula evaluates <span class="math notranslate nohighlight">\(u(x)\)</span> anywhere away from the boundary.</p>
 </section>
 <section id="boundary-discretization">
 <h2>Boundary Discretization<a class="headerlink" href="#boundary-discretization" title="Link to this heading">#</a></h2>
@@ -459,7 +455,7 @@
 \[
   V\rho = g \quad \text{on } \Gamma,
   \qquad
-  (V\rho)(x) = \int_\Gamma G_\kappa(x,y)\,\rho(y)\,d\sigma_y.
+  (\widetilde V\rho)(x) = \int_\Gamma G_\kappa(x,y)\,\rho(y)\,d\sigma_y.
 \]</div>
 <p>Choose a finite-dimensional boundary space</p>
 <div class="math notranslate nohighlight">
