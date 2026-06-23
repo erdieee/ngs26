@@ -1,0 +1,65 @@
+Traceback (most recent call last):
+  File "/Users/rafael/uni/ngs26/.venv/lib/python3.13/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/rafael/uni/ngs26/.venv/lib/python3.13/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/rafael/uni/ngs26/.venv/lib/python3.13/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/rafael/uni/ngs26/.venv/lib/python3.13/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "/Users/rafael/uni/ngs26/.venv/lib/python3.13/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/rafael/uni/ngs26/.venv/lib/python3.13/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from ngsolve import *
+from ngsolve.webgui import Draw
+from netgen.occ import *
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mModuleNotFoundError[39m                       Traceback (most recent call last)
+[31mModuleNotFoundError[39m: No module named 'numpy'
+
+The above exception was the direct cause of the following exception:
+
+[31mImportError[39m                               Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m [38;5;28;01mfrom[39;00m ngsolve [38;5;28;01mimport[39;00m *
+[32m      2[39m [38;5;28;01mfrom[39;00m ngsolve.webgui [38;5;28;01mimport[39;00m Draw
+[32m      3[39m [38;5;28;01mfrom[39;00m netgen.occ [38;5;28;01mimport[39;00m *
+
+[36mFile [39m[32m/Applications/Netgen.app/Contents/Resources/lib/python3.13/site-packages/ngsolve/__init__.py:17[39m
+[32m     13[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mos[39;00m,[38;5;250m [39m[34;01msys[39;00m
+[32m     15[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m config
+[32m---> [39m[32m17[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnetgen[39;00m
+[32m     19[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [33m"[39m[33mdarwin[39m[33m"[39m [38;5;129;01min[39;00m sys.platform [38;5;129;01mand[39;00m config.is_python_package:
+[32m     20[39m     [38;5;66;03m# Load openblas from the ngsolve_openblas python package, if available[39;00m
+[32m     21[39m     [38;5;28;01mtry[39;00m:
+
+[36mFile [39m[32m/Applications/Netgen.app/Contents/Resources/lib/python3.13/site-packages/netgen/__init__.py:104[39m
+[32m    101[39m [38;5;28;01mdel[39;00m os
+[32m    103[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpyngcore[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Timer
+[32m--> [39m[32m104[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m libngpy
+[32m    106[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnetgen[39;00m[34;01m.[39;00m[34;01mlibngpy[39;00m[34;01m.[39;00m[34;01m_meshing[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m _Redraw
+[32m    108[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mRedraw[39m(*args, **kwargs):
+
+[31mImportError[39m: initialization failed
+
