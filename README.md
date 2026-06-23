@@ -1,1 +1,1 @@
-View online: https://jschoeberl.github.io/SciCADE-course/
+View online: https://erdieee.github.io/ngs26/
