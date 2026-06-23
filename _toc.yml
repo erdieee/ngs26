@@ -6,3 +6,5 @@ root: index
 
 chapters:
   - file: bem/01_intro
+  - file: bem/fmm
+  - file: bem/python_api
