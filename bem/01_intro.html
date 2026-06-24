@@ -434,7 +434,7 @@
   \qquad
   G_\kappa(x,y) = \frac{e^{i\kappa |x-y|}}{4\pi |x-y|}.
 \]</div>
-<p>BEM represents the solution by a layer potential with an unknown boundary density. For the single-layer ansatz in the domain,</p>
+<p>BEM represents the solution by a layer potential with an unknown boundary density. For the single layer ansatz in the domain,</p>
 <div class="math notranslate nohighlight">
 \[
   u(x) = (\widetilde V\rho)(x)
@@ -458,7 +458,7 @@
     - G_\kappa(x,y)\,\rho(y)
   \right) d\sigma_y.
 \]</div>
-<p>For the single-layer case, taking the boundary trace gives the boundary integral equation for the density:</p>
+<p>For the single layer case, taking the boundary trace gives the boundary integral equation for the density:</p>
 <div class="math notranslate nohighlight">
 \[
   V\rho = g \quad \text{on } \Gamma.
@@ -466,14 +466,14 @@
 </section>
 <section id="boundary-discretization">
 <h2>Boundary Discretization<a class="headerlink" href="#boundary-discretization" title="Link to this heading">#</a></h2>
-<p>For the single-layer ansatz, the boundary integral equation is</p>
+<p>For the single layer ansatz, the boundary integral equation is</p>
 <div class="math notranslate nohighlight">
 \[
   V\rho = g \quad \text{on } \Gamma,
   \qquad
   (\widetilde V\rho)(x) = \int_\Gamma G_\kappa(x,y)\,\rho(y)\,d\sigma_y.
 \]</div>
-<p>Choose a finite-dimensional boundary space</p>
+<p>Choose a finite dimensional boundary space</p>
 <div class="math notranslate nohighlight">
 \[
   X_h = \operatorname{span}\{\varphi_1,\dots,\varphi_N\}.
@@ -506,8 +506,8 @@
   \qquad
   b_i = \langle g, \eta_i \rangle_\Gamma.
 \]</div>
-<p>A matrix-vector product contains a potential evaluation: density values on source quadrature points are passed through the kernel <span class="math notranslate nohighlight">\(G_\kappa(x,y)\)</span> and accumulated at target quadrature points.</p>
-<p>This is the computational bottleneck: far-away boundary elements still interact through the Green’s function, so the discrete operator is dense.</p>
+<p>A matrix vector product contains a potential evaluation: density values on source quadrature points are passed through the kernel <span class="math notranslate nohighlight">\(G_\kappa(x,y)\)</span> and accumulated at target quadrature points.</p>
+<p>This is the computational bottleneck: far away boundary elements still interact through the Green’s function, so the discrete operator is dense.</p>
 <p>FMM keeps near interactions direct and replaces far interactions by compressed Green’s function expansions.</p>
 </section>
 </section>
