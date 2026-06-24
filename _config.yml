@@ -3,7 +3,7 @@
 
 title: Boundary Element Methods in NGSolve
 author: R. Dorigo
-# logo: NGSlogo.png
+logo: NGSlogo.png
 copyright : "2026"  # Copyright year to be placed in the footer
 
 repository:
@@ -31,8 +31,10 @@ execute:
 #    targetname: book.tex
 
 # Add a bibtex file so that we can create citations
-# bibtex_bibfiles:
-#   - references.bib
+bibtex_bibfiles:
+  - references.bib
+bibtex_default_style: unsrtalpha
+bibtex_citestyle: author_year
 
 # Information about where the book exists on the web
 # repository:

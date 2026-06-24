@@ -4,7 +4,16 @@
 format: jb-book
 root: index
 
-chapters:
-  - file: bem/01_intro
-  - file: bem/fmm
-  - file: bem/python_api
+parts:
+  - caption: Basics and Theory
+    chapters:
+      - file: bem/01_intro
+      - file: bem/fmm
+      - file: bem/python_api
+      - file: bem/nearfield_potential
+  - caption: Examples
+    chapters:
+      - file: bem/examples
+  - caption: References
+    chapters:
+      - file: references
