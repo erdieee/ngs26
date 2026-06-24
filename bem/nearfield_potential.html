@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Boundary Element Methods in NGSolve &#8212; Boundary Element Methods in NGSolve</title>
+    <title>Nearfield Potential Evaluation &#8212; Boundary Element Methods in NGSolve</title>
   
   
   
@@ -27,45 +27,46 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Boundary Element Methods" href="bem/01_intro.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bem/nearfield_potential';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Python API" href="python_api.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -87,7 +88,7 @@
   <dialog id="pst-search-dialog">
     
 <form class="bd-search d-flex align-items-center"
-      action="search.html"
+      action="../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -117,8 +118,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -138,7 +137,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="../index.html">
   
   
   
@@ -149,8 +148,8 @@
       
     
     
-    <img src="_static/NGSlogo.png" class="logo__image only-light" alt="Boundary Element Methods in NGSolve - Home"/>
-    <img src="_static/NGSlogo.png" class="logo__image only-dark pst-js-only" alt="Boundary Element Methods in NGSolve - Home"/>
+    <img src="../_static/NGSlogo.png" class="logo__image only-light" alt="Boundary Element Methods in NGSolve - Home"/>
+    <img src="../_static/NGSlogo.png" class="logo__image only-dark pst-js-only" alt="Boundary Element Methods in NGSolve - Home"/>
   
   
 </a></div>
@@ -165,26 +164,26 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
                     Boundary Element Methods in NGSolve
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics and Theory</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="bem/01_intro.html">Boundary Element Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bem/fmm.html">Fast Multipole Acceleration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bem/python_api.html">Python API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bem/nearfield_potential.html">Nearfield Potential Evaluation</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_intro.html">Boundary Element Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmm.html">Fast Multipole Acceleration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_api.html">Python API</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Nearfield Potential Evaluation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="bem/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="references.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">Bibliography</a></li>
 </ul>
 
     </div>
@@ -244,7 +243,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/erdieee/ngs26/blob/main/index.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/erdieee/ngs26/blob/main/bem/nearfield_potential.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -253,7 +252,7 @@
 
 <span class="btn__icon-container">
   
-    <img alt="Colab logo" src="_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -290,7 +289,7 @@
       
       
       
-      <li><a href="_sources/index.ipynb" target="_blank"
+      <li><a href="../_sources/bem/nearfield_potential.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -366,7 +365,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Boundary Element Methods in NGSolve</h1>
+    <h1>Nearfield Potential Evaluation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -376,10 +375,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-course-we-give-an-introduction-to">In this course we give an introduction to</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-documentation">Further documentation</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-geometry">Local Geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-correction">Analytical Correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-singular-parts">Supported Singular Parts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-expansion-path">Local Expansion Path</a></li>
 </ul>
             </nav>
         </div>
@@ -391,31 +390,80 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="boundary-element-methods-in-ngsolve">
-<h1>Boundary Element Methods in NGSolve<a class="headerlink" href="#boundary-element-methods-in-ngsolve" title="Link to this heading">#</a></h1>
-<p>Rafael Dorigo, TU Wien</p>
-<p><strong>NGSolve User Meeting 2026, June 29 – July 1, Winterthur</strong></p>
-<section id="in-this-course-we-give-an-introduction-to">
-<h2>In this course we give an introduction to<a class="headerlink" href="#in-this-course-we-give-an-introduction-to" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Boundary elements methods</p></li>
-</ul>
-<a class="reference internal image-reference" href="_images/NGSlogo.png"><img alt="_images/NGSlogo.png" class="align-center" src="_images/NGSlogo.png" style="width: 200px;" />
-</a>
-<section id="further-documentation">
-<h3>Further documentation<a class="headerlink" href="#further-documentation" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>NGSBem docs (Lucy Weggler): <a class="reference external" href="https://weggler.github.io/docu-ngsbem/intro.html">https://weggler.github.io/docu-ngsbem/intro.html</a></p></li>
-<li><p>NGSolve docs: <a class="reference external" href="https://docu.ngsolve.org/latest/i-tutorials/index.html#boundary-element-and-fast-multipole-methods">https://docu.ngsolve.org/latest/i-tutorials/index.html#boundary-element-and-fast-multipole-methods</a></p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="nearfield-potential-evaluation">
+<h1>Nearfield Potential Evaluation<a class="headerlink" href="#nearfield-potential-evaluation" title="Link to this heading">#</a></h1>
+<p>Potential evaluation after the BEM solve asks for the field away from, close to, or on the boundary:</p>
+<div class="math notranslate nohighlight">
+\[
+u(x)=\sum_{T\subset\Gamma}\int_T G(x,y)\,\rho_h(y)\,d\sigma(y).
+\]</div>
+<p>For target points close to a source element, the kernel is nearly singular. Fixed order quadrature and pure farfield expansions lose accuracy exactly where the visualized potential is often most interesting.</p>
+<section id="local-geometry">
+<h2>Local Geometry<a class="headerlink" href="#local-geometry" title="Link to this heading">#</a></h2>
+<p>For a close triangular source element, NGSolve projects the target point onto the reference triangle and builds a tangent triangle at the projected point:</p>
+<div class="math notranslate nohighlight">
+\[
+\xi_0=\operatorname*{arg\,min}_{\xi\in\widehat{T}} |x-F_T(\xi)|,
+\qquad
+p_0=F_T(\xi_0),
+\qquad
+F_{T,\mathrm{flat}}(\xi)=p_0+J_T(\xi_0)(\xi-\xi_0).
+\]</div>
+<p><img alt="Nearfield geometry" src="../_images/nearfield_triangle.png" /></p>
+<p>The singular correction is computed on <span class="math notranslate nohighlight">\(T_{\mathrm{flat}}\)</span>, while the usual element evaluator supplies the local source value at <span class="math notranslate nohighlight">\(\xi_0\)</span>.</p>
 </section>
+<section id="analytical-correction">
+<h2>Analytical Correction<a class="headerlink" href="#analytical-correction" title="Link to this heading">#</a></h2>
+<p>On a near element <span class="math notranslate nohighlight">\(T\)</span>, split the evaluation into the already computed base contribution and a local singular correction:</p>
+<div class="math notranslate nohighlight">
+\[
+u_T(x)
+\approx
+u_T^{\mathrm{base}}(x)
++
+\rho_h(p_0)\,
+\left(
+I_T^{\mathrm{analytic}}(x)-I_T^{\mathrm{quad}}(x)
+\right).
+\]</div>
+<p>Here</p>
+<div class="math notranslate nohighlight">
+\[
+I_T^{\mathrm{analytic}}(x)=\int_{T_{\mathrm{flat}}}\frac{1}{4\pi |x-y|}\,d\sigma(y).
+\]</div>
+<p>The analytical term is evaluated by closed triangle formulas. The term <span class="math notranslate nohighlight">\(I_T^{\mathrm{quad}}\)</span> is the same singular part evaluated by the standard flat quadrature rule. This replaces only the poorly resolved singular part and avoids double counting.</p>
 </section>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
+<section id="supported-singular-parts">
+<h2>Supported Singular Parts<a class="headerlink" href="#supported-singular-parts" title="Link to this heading">#</a></h2>
+<p>The implemented analytical triangle formulas are</p>
+<div class="math notranslate nohighlight">
+\[
+\int_T \frac{1}{4\pi |x-y|}\,d\sigma(y),
+\qquad
+\int_T \nabla_x\left(\frac{1}{4\pi |x-y|}\right)\,d\sigma(y),
+\qquad
+\int_T \frac{\partial}{\partial n_y}\left(\frac{1}{4\pi |x-y|}\right)\,d\sigma(y).
+\]</div>
+<p>They are used for Laplace single layer, the gradient of the Laplace single layer, and Laplace double layer. Helmholtz single and double layer potentials use the same Laplace singular correction, because the factor <span class="math notranslate nohighlight">\(e^{i\kappa |x-y|}\)</span> is smooth at <span class="math notranslate nohighlight">\(x=y\)</span>; the singular behavior is still the Laplace <span class="math notranslate nohighlight">\(1/|x-y|\)</span> part.</p>
+</section>
+<section id="local-expansion-path">
+<h2>Local Expansion Path<a class="headerlink" href="#local-expansion-path" title="Link to this heading">#</a></h2>
+<p>For many target points in a region, the potential can first be represented by a local expansion:</p>
+<div class="math notranslate nohighlight">
+\[
+u^{\mathrm{base}}(x)=\mathcal L_{\mathcal R}(x),
+\qquad x\in\mathcal R.
+\]</div>
+<p>Near source elements are then corrected pointwise:</p>
+<div class="math notranslate nohighlight">
+\[
+u(x)=\mathcal L_{\mathcal R}(x)
++\sum_{T\in\mathcal N(x)}
+\rho_h(p_{0,T})
+\left(I_T^{\mathrm{analytic}}(x)-I_T^{\mathrm{quad}}(x)\right).
+\]</div>
+<p>If no analytical triangle formula is registered for the kernel, the fallback is a numerical correction: subtract the standard element quadrature and add a point-adapted Duffy rule on the close triangle.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -431,7 +479,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./."
+            path: "./bem"
         },
         predefinedOutput: true
     }
@@ -448,12 +496,21 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="python_api.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python API</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="bem/01_intro.html"
+       href="examples.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Boundary Element Methods</p>
+        <p class="prev-next-title">Examples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -475,10 +532,10 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-course-we-give-an-introduction-to">In this course we give an introduction to</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-documentation">Further documentation</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-geometry">Local Geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-correction">Analytical Correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-singular-parts">Supported Singular Parts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-expansion-path">Local Expansion Path</a></li>
 </ul>
   </nav></div>
 
@@ -527,8 +584,8 @@ By R. Dorigo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
