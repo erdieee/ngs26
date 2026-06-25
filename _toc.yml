@@ -13,7 +13,7 @@ parts:
       - file: bem/nearfield_potential
   - caption: Examples
     chapters:
-      - file: bem/examples
+      - file: bem/maxwell_stabilized
   - caption: References
     chapters:
       - file: references
