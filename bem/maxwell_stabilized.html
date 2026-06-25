@@ -65,6 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'bem/maxwell_stabilized';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bibliography" href="../references.html" />
+    <link rel="prev" title="Nearfield Potential Evaluation" href="nearfield_potential.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -115,8 +117,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -178,8 +178,8 @@
 <li class="toctree-l1"><a class="reference internal" href="nearfield_potential.html">Nearfield Potential Evaluation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Maxwell Stabilized</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -442,20 +442,6 @@ Q_{\kappa}^{\top} &amp; \kappa^{2} V_{\kappa}
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">ngsolve</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">ngsolve.bem</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span><span class="w"> </span><span class="nn">ngsolve.webgui</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span><span class="w"> </span><span class="nn">ngsolve.krylovspace</span><span class="w"> </span><span class="kn">import</span> <span class="n">GMRes</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -589,6 +575,44 @@ Q_{\kappa}^{\top} &amp; \kappa^{2} V_{\kappa}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa: 5.0
+stabilized: cond = 53353.268
+classical: cond = 533.62
+</pre></div>
+</div>
+<img alt="../_images/d307a642806214664d4fa2795bffbbac7e6d93b8af7a6ebe6d9c0d9c9e8ed182.png" src="../_images/d307a642806214664d4fa2795bffbbac7e6d93b8af7a6ebe6d9c0d9c9e8ed182.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa: 0.5
+stabilized: ratio = 0.026, cond = 1369.86, prev_cond = 53353.268
+classical: ratio = 18.933, cond = 10103.077, prev_cond = 533.62
+</pre></div>
+</div>
+<img alt="../_images/0e673f8aea2ed98c621d0c98e336b6f990a4f26d3688779295707710d1f55efa.png" src="../_images/0e673f8aea2ed98c621d0c98e336b6f990a4f26d3688779295707710d1f55efa.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa: 0.05
+stabilized: ratio = 0.886, cond = 1214.124, prev_cond = 1369.86
+classical: ratio = 100.193, cond = 1012254.071, prev_cond = 10103.077
+</pre></div>
+</div>
+<img alt="../_images/3a5bfad547d1933add36e532dd44123faf9da86e8094b55c73bf6f8d99cf28d3.png" src="../_images/3a5bfad547d1933add36e532dd44123faf9da86e8094b55c73bf6f8d99cf28d3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa: 0.005
+stabilized: ratio = 1.061, cond = 1288.441, prev_cond = 1214.124
+classical: ratio = 100.002, cond = 101227364.262, prev_cond = 1012254.071
+</pre></div>
+</div>
+<img alt="../_images/6870de67af6b669c87e499e8c212e600b0ecb335b8f3a434e114ce2495b91f97.png" src="../_images/6870de67af6b669c87e499e8c212e600b0ecb335b8f3a434e114ce2495b91f97.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa: 0.0005
+stabilized: ratio = 1.0, cond = 1288.426, prev_cond = 1288.441
+classical: ratio = 100.0, cond = 10122738366.222, prev_cond = 101227364.262
+</pre></div>
+</div>
+<img alt="../_images/48c25f61d5c3174b1bd3d6b2bf8c6bacc1957ea6fc8b83dee7b6a6dcbfde220f.png" src="../_images/48c25f61d5c3174b1bd3d6b2bf8c6bacc1957ea6fc8b83dee7b6a6dcbfde220f.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa: 5e-05
+stabilized: ratio = 1.0, cond = 1288.426, prev_cond = 1288.426
+classical: ratio = 100.0, cond = 1012273324101.426, prev_cond = 10122738366.222
+</pre></div>
+</div>
+<img alt="../_images/96dfd7078c0da18cb21c9d3fd554b8b1e3a884660026b5383ef608169d501bd3.png" src="../_images/96dfd7078c0da18cb21c9d3fd554b8b1e3a884660026b5383ef608169d501bd3.png" />
+</div>
 </div>
 <p>We notice that the condition number of the classical solution grows with <span class="math notranslate nohighlight">\(O(\kappa^{-2})\)</span> whilst the condition number of the stabilized formulation stays constant.</p>
 </section>
@@ -616,6 +640,9 @@ Q_{\kappa}^{\top} &amp; \kappa^{2} V_{\kappa}
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8902dbe50bd1c8f78e9c0e962c7511d36300305570743e96a944fc101c8b0a26.png" src="../_images/8902dbe50bd1c8f78e9c0e962c7511d36300305570743e96a944fc101c8b0a26.png" />
 </div>
 </div>
 <p><strong>References (theoretical and numerical results):</strong></p>
@@ -656,6 +683,24 @@ Q_{\kappa}^{\top} &amp; \kappa^{2} V_{\kappa}
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="nearfield_potential.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Nearfield Potential Evaluation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../references.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bibliography</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
