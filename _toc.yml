@@ -16,6 +16,7 @@ parts:
       - file: bem/laplace_capacitor
       - file: bem/poisson
       - file: bem/maxwell_stabilized
+      - file: bem/brakhage_werner
   - caption: References
     chapters:
       - file: references
