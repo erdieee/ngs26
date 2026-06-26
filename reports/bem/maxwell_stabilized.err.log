@@ -28,26 +28,28 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import netgen.meshing as meshing
-import numpy as np
-from netgen.occ import *
-from ngsolve.la import EigenValues_Preconditioner
-from ngsolve import *
-from ngsolve.bem import *
-from ngsolve.webgui import Draw
-from ngsolve.krylovspace import GMRes
-import matplotlib.pyplot as plt
+import importlib.util
+import shutil
+
+if importlib.util.find_spec("google.colab") is not None:
+    if shutil.which("uv") is None:
+        !pip install -q uv
+    !uv pip install --system --pre ngsolve numpy matplotlib
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 9[39m
-[32m      5[39m [38;5;28;01mfrom[39;00m ngsolve [38;5;28;01mimport[39;00m *
-[32m      6[39m [38;5;28;01mfrom[39;00m ngsolve.bem [38;5;28;01mimport[39;00m *
-[32m      7[39m [38;5;28;01mfrom[39;00m ngsolve.webgui [38;5;28;01mimport[39;00m Draw
-[32m      8[39m [38;5;28;01mfrom[39;00m ngsolve.krylovspace [38;5;28;01mimport[39;00m GMRes
-[32m----> [39m[32m9[39m [38;5;28;01mimport[39;00m matplotlib.pyplot [38;5;28;01mas[39;00m plt
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 4[39m
+[32m      1[39m [38;5;28;01mimport[39;00m importlib.util
+[32m      2[39m [38;5;28;01mimport[39;00m shutil
+[32m      3[39m 
+[32m----> [39m[32m4[39m [38;5;28;01mif[39;00m importlib.util.find_spec([33m"google.colab"[39m) [38;5;28;01mis[39;00m [38;5;28;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[32m      5[39m     [38;5;28;01mif[39;00m shutil.which([33m"uv"[39m) [38;5;28;01mis[39;00m [38;5;28;01mNone[39;00m:
+[32m      6[39m         get_ipython().system([33m'pip install -q uv'[39m)
+[32m      7[39m     get_ipython().system([33m'uv pip install --system --pre ngsolve numpy matplotlib'[39m)
 
-[31mModuleNotFoundError[39m: No module named 'matplotlib'
+[36mFile [39m[32m<frozen importlib.util>:91[39m, in [36mfind_spec[39m[34m(name, package)[39m
+
+[31mModuleNotFoundError[39m: No module named 'google'
 
