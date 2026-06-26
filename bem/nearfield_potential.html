@@ -393,12 +393,12 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="nearfield-potential-evaluation">
 <h1>Nearfield Potential Evaluation<a class="headerlink" href="#nearfield-potential-evaluation" title="Link to this heading">#</a></h1>
-<p>Potential evaluation after the BEM solve asks for the field away from, close to, or on the boundary. For one potential we write</p>
-<div class="math notranslate nohighlight">
-\[
-u(x)=\int_{\Gamma}G(x,y)\,\rho(y)\,dy.
-\]</div>
-<p>For target points close to a source element, the kernel is nearly singular. Fixed order quadrature and pure farfield expansions lose accuracy exactly where the visualized potential is often most interesting.</p>
+<p>After computing the density on the surface, the potential
+$<span class="math notranslate nohighlight">\(
+u(x)=\int_{\Gamma}G(x,y)\,\rho(y)\,dy, \qquad x \in \Omega \setminus \Gamma,
+\)</span>$</p>
+<p>away from or close to the boundary needs to be evaluated.</p>
+<p>For target points close to the surface, the kernel is nearly singular. Fixed order quadrature and pure farfield expansions lose accuracy exactly where the visualized potential is often most interesting.</p>
 <section id="local-geometry">
 <h2>Local Geometry<a class="headerlink" href="#local-geometry" title="Link to this heading">#</a></h2>
 <p>For a close triangular source element <span class="math notranslate nohighlight">\(\phi(\widehat T)\)</span>, NGSolve projects the target point onto the reference triangle and builds a tangent triangle at the projected point:</p>
@@ -439,19 +439,14 @@ G(x,\phi(\widehat y))\,\widehat\rho(\widehat y)\,J(\widehat y)
 \Big)d\widehat y.
 \end{aligned}
 \end{split}\]</div>
-<p>The tangent triangle captures the leading local singularity since</p>
-<div class="math notranslate nohighlight">
-\[
-\phi(\widehat y)=\phi_{\mathrm{lin}}(\widehat y)+O(|\widehat y-\widehat x_0|^2).
-\]</div>
-<p>For the Laplace kernel <span class="math notranslate nohighlight">\(G_0(x,y)=\frac{1}{(4\pi|x-y|)}\)</span> this cancels the leading <span class="math notranslate nohighlight">\(\frac{1}{r}\)</span> behavior, leaving a bounded remainder for standard quadrature. For Helmholtz,</p>
+<p>The tangent triangle captures the leading local singularity. For the Laplace kernel <span class="math notranslate nohighlight">\(G_0(x,y)=\frac{1}{(4\pi|x-y|)}\)</span> this cancels the leading <span class="math notranslate nohighlight">\(\frac{1}{r}\)</span> behavior, leaving a bounded remainder for standard quadrature. For Helmholtz,</p>
 <div class="math notranslate nohighlight">
 \[
 G_k(x,y)=\frac{e^{ik|x-y|}}{4\pi|x-y|}
 =\frac{1}{4\pi r}+\frac{ik}{4\pi}+O(r),
 \qquad r=|x-y|,
 \]</div>
-<p>so the same subtraction removes the singular part and only a smooth Helmholtz correction remains. The first integral is evaluated by the exact triangle formula <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../references.html#id5" title="Nail A. Gumerov and Ramani Duraiswami. Analytical computation of boundary integrals for the helmholtz equation in three dimensions. 2021. arXiv:2103.17196, doi:10.48550/arXiv.2103.17196.">GD21</a>]</span>, the second part is evaluated using standar Gauss quadrature.</p>
+<p>so the same subtraction removes the singular part and only a smooth Helmholtz correction remains. The first integral is evaluated by the exact triangle formula <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../references.html#id5" title="Nail A. Gumerov and Ramani Duraiswami. Analytical computation of boundary integrals for the helmholtz equation in three dimensions. 2021. arXiv:2103.17196, doi:10.48550/arXiv.2103.17196.">GD21</a>]</span>, the second part is evaluated using standard Gauss quadrature.</p>
 </section>
 <section id="near-and-far-split">
 <h2>Near and Far Split<a class="headerlink" href="#near-and-far-split" title="Link to this heading">#</a></h2>

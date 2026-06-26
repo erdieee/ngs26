@@ -422,19 +422,12 @@
 </div>
 <section id="solution-representation">
 <h2>Solution Representation<a class="headerlink" href="#solution-representation" title="Link to this heading">#</a></h2>
-<p>Model interior Helmholtz problem:</p>
+<p>Model Helmholtz problem:</p>
 <div class="math notranslate nohighlight">
 \[
   \Delta u + \kappa^2 u = 0 \quad \text{in } \Omega,
   \qquad
   u = g \quad \text{on } \Gamma,
-\]</div>
-<p>The outgoing fundamental solution used in the layer potentials satisfies</p>
-<div class="math notranslate nohighlight">
-\[
-  (\Delta_x + \kappa^2)G_\kappa(x,y) = \delta_y,
-  \qquad
-  G_\kappa(x,y) = \frac{e^{i\kappa |x-y|}}{4\pi |x-y|}.
 \]</div>
 <p>BEM represents the solution by a layer potential with an unknown boundary density. For the single layer ansatz in the domain,</p>
 <div class="math notranslate nohighlight">
@@ -444,23 +437,7 @@
   \qquad
   x \notin \Gamma.
 \]</div>
-<p>In a direct formulation, the densities are the physical boundary traces,</p>
-<div class="math notranslate nohighlight">
-\[
-  \mu = u|_\Gamma,
-  \qquad
-  \rho = \partial_n u|_\Gamma.
-\]</div>
-<p>The combined representation is</p>
-<div class="math notranslate nohighlight">
-\[
-  u(x) = \int_\Gamma
-  \left(
-    \frac{\partial G_\kappa(x,y)}{\partial n_y}\,\mu(y)
-    - G_\kappa(x,y)\,\rho(y)
-  \right) d\sigma_y.
-\]</div>
-<p>For the single layer case, taking the boundary trace gives the boundary integral equation for the density:</p>
+<p>Taking the boundary trace gives the boundary integral equation for the density</p>
 <div class="math notranslate nohighlight">
 \[
   V\rho = g \quad \text{on } \Gamma.
@@ -485,28 +462,16 @@
 \[
   \langle V\rho_h, \eta_h \rangle_\Gamma
   = \langle g, \eta_h \rangle_\Gamma
-  \qquad \forall\,\eta_h \in X_h.
+  \qquad \forall\,\eta_h \in X_h,
 \]</div>
-<p>Expand the unknown density in the boundary basis:</p>
-<div class="math notranslate nohighlight">
-\[
-  \rho_h(y) = \sum_{j=1}^N c_j\,\varphi_j(y).
-\]</div>
-<p>Testing with basis functions <span class="math notranslate nohighlight">\(\eta_i\)</span> gives the linear system</p>
-<div class="math notranslate nohighlight">
-\[
-  A c = b,
-\]</div>
-<p>with</p>
+<p>with system matrix</p>
 <div class="math notranslate nohighlight">
 \[
   A_{ij}
   = \langle V\varphi_j, \eta_i \rangle_\Gamma
   = \int_\Gamma \int_\Gamma
       \eta_i(x)\,G_\kappa(x,y)\,\varphi_j(y)
-    \,d\sigma_y\,d\sigma_x,
-  \qquad
-  b_i = \langle g, \eta_i \rangle_\Gamma.
+    \,d\sigma_y\,d\sigma_x.
 \]</div>
 <p>A matrix vector product contains a potential evaluation: density values on source quadrature points are passed through the kernel <span class="math notranslate nohighlight">\(G_\kappa(x,y)\)</span> and accumulated at target quadrature points.</p>
 <p>This is the computational bottleneck: far away boundary elements still interact through the Green’s function, so the discrete operator is dense.</p>
