@@ -393,9 +393,24 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="maxwell-stabilized">
 <h1>Maxwell Stabilized<a class="headerlink" href="#maxwell-stabilized" title="Link to this heading">#</a></h1>
-<p>It is well known that the numerical schemes which rely on the classical second order equation are not stable when passing to the limit <span class="math notranslate nohighlight">\(\kappa \to 0\)</span>. The reason for this is that the Gaussian law, which is implicitly embedded for normal wave numbers, is no longer satisfied. The method that we demonstrate here leads to a system of equations in which the continuity equation is maintained (reference below).</p>
+<p>We consider a perfect conductor <span class="math notranslate nohighlight">\(\Omega \subset \mathbb R^3\)</span> emitting an electric field into <span class="math notranslate nohighlight">\(\Omega^c\)</span>. The scattered electric field <span class="math notranslate nohighlight">\(\boldsymbol E\)</span> solves the following Dirichlet boundary value problem:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
+\[\begin{split} \left\{ \begin{array}{rcl l} \mathbf{curl} \, \mathbf{curl}\, \boldsymbol E - \kappa^2 \, \boldsymbol E &amp;=&amp; \boldsymbol 0, \quad &amp;\textnormal{in } \Omega^c \subset \mathbb R^3\,,\\ \gamma_R \,\boldsymbol E &amp;=&amp; \boldsymbol m, \quad &amp; \textnormal{on }\Gamma \\ \left\| \mathbf{curl} \, \boldsymbol E( x) - i\,\omega\,\epsilon \, \boldsymbol E( x)\right\| &amp;=&amp; \mathcal O\left( \displaystyle \frac{1}{\| x\|^2}\right), &amp;\textnormal{for} \; \|x\| \to \infty\,.\end{array} \right. \end{split}\]</div>
+<p>The electric field <span class="math notranslate nohighlight">\(\boldsymbol E\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[ \boldsymbol E(x) = \underbrace{ \int\limits_\Gamma \displaystyle{ \frac{1}{4\,\pi} \, \frac{e^{i\,\kappa\,\|x-y\|}}{\| x-y\|} } \, \boldsymbol j(y)\, \mathrm{d}s_y  +  \frac{1}{\kappa^2} \, \nabla \int\limits_\Gamma \displaystyle{ \frac{1}{4\,\pi}\, \frac{e^{i\,\kappa\,\|x-y\|}}{\| x-y\|} } \, \mathrm{div}_\Gamma \boldsymbol j(y)\, \mathrm{d}y}_{\displaystyle{ \mathrm{SL}(\boldsymbol j)}} \,.\]</div>
+<p>The classical variational formulation is: find
+<span class="math notranslate nohighlight">\(j\in H^{-\frac12}(\mathrm{div}_\Gamma,\Gamma)\)</span> such that for all <span class="math notranslate nohighlight">\(\phi\in H^{-\frac12}(\mathrm{div}_\Gamma,\Gamma)\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\langle \gamma_R S_\kappa(j),\phi\rangle_\Gamma
+-\frac{1}{\kappa^2}\langle \operatorname{div}_\Gamma\phi,\gamma_0 S_\kappa(\operatorname{div}_\Gamma j)\rangle_\Gamma
+=\langle m\times n,\phi\rangle_\Gamma, \qquad S_\kappa q(x) = \int\limits_\Gamma \frac{1}{4\pi}\frac{e^{i\kappa\|x-y\|}}{\|x-y\|}\,q(y)\,\mathrm d y.
+\]</div>
+<p>It is well known that the numerical schemes which rely on the classical second order equation are not stable when passing to the limit <span class="math notranslate nohighlight">\(\kappa \to 0\)</span>, with condition number <span class="math notranslate nohighlight">\(\mathcal O (\kappa^{-2})\)</span> <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../references.html#id6" title="Lucy Weggler. High Order Boundary Element Methods. PhD thesis, Universität des Saarlandes, 2011.">Weg11</a>]</span>. The reason for this is that the Gaussian law, which is implicitly embedded for normal wave numbers, is no longer satisfied.</p>
+<p>The stabilized system</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 \left\{
 \begin{aligned}
 \langle \gamma_{R} S_{\kappa}(j), \phi \rangle_{\Gamma}
@@ -411,10 +426,11 @@
 0\,.
 \end{aligned}
 \right.
-\end{split}\]</div>
-<p>We solve the discretized system</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \left( \begin{array}{cc} 
+\end{align*}\]</div>
+<p>is conditioned with <span class="math notranslate nohighlight">\(\mathcal O(1)\)</span>. We solve the discretized system</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\left( \begin{array}{cc} 
 A_{\kappa} &amp; Q_{\kappa} \\
 Q_{\kappa}^{\top} &amp; \kappa^{2} V_{\kappa}
 \end{array}\right) \,\left( \begin{array}{c} 
@@ -422,15 +438,14 @@ Q_{\kappa}^{\top} &amp; \kappa^{2} V_{\kappa}
 \alpha_{2}
 \end{array}\right) =
 \left( \begin{array}{c} M\, \beta \\ 0 \end{array} \right)\,,
-\end{split}\]</div>
+\end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\phi_k, \phi_l \in H^{-\frac12}(\mathrm{div}_\Gamma, \Gamma)\)</span> and <span class="math notranslate nohighlight">\(\nu_l, \nu_k\in H^{-\frac12}(\Gamma)\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{array}{rcl}
-(A_{\kappa})_{lk} &amp;=&amp; \langle \gamma_{R} S_{\kappa}(\phi_{k}),\, \phi_{l}\rangle_{\Gamma} = \displaystyle \int\limits_{\Gamma}\displaystyle \int\limits_{\Gamma} \phi_{l}(x)\cdot\bigl(G_{\kappa}(x-y)\,\phi_{k}(y)\bigr)\, d\sigma_{y}\, d\sigma_{x},\\ &amp;&amp; \\ 
-(V_{\kappa})_{lk} &amp;=&amp; \langle \nu_{l},\, \gamma_{0} S_{\kappa}(\nu_{k}) \rangle_{\Gamma} = \displaystyle \int\limits_{\Gamma} \displaystyle \int\limits_{\Gamma} \nu_{l}(x)\, G_{\kappa}(x-y)\, \nu_{k}(y)\, d\sigma_{y}\, d\sigma_{x},\\ &amp;&amp; \\
+(A_{\kappa})_{lk} &amp;=&amp; \langle \gamma_{R} S_{\kappa}(\phi_{k}),\, \phi_{l}\rangle_{\Gamma} = \displaystyle \int\limits_{\Gamma}\displaystyle \int\limits_{\Gamma} \phi_{l}(x)\cdot\bigl(G_{\kappa}(x-y)\,\phi_{k}(y)\bigr)\, d\sigma_{y}\, d\sigma_{x},\\
+(V_{\kappa})_{lk} &amp;=&amp; \langle \nu_{l},\, \gamma_{0} S_{\kappa}(\nu_{k}) \rangle_{\Gamma} = \displaystyle \int\limits_{\Gamma} \displaystyle \int\limits_{\Gamma} \nu_{l}(x)\, G_{\kappa}(x-y)\, \nu_{k}(y)\, d\sigma_{y}\, d\sigma_{x},\\
 (Q_{\kappa})_{lk} &amp;=&amp; \langle \operatorname{div}_{\Gamma}\phi_{l},\, \gamma_{0} S_{\kappa} (\nu_{k})\rangle_{\Gamma} = \displaystyle \int\limits_{\Gamma} \displaystyle \int\limits_{\Gamma} \operatorname{div}_{\Gamma}\phi_{l}(x)\, G_{\kappa}(x-y)\, \nu_{k}(y)\, d\sigma_{y}\, d\sigma_{x}\,. \end{array} \end{split}\]</div>
-<p>We achieve a stabilization for the low frequency range at the cost of a larger system of equations. The method we propose is independent of the order of approximation. It is important to note that the stabilized system has a one dimensional kernel that must be explicitly considered.</p>
-<p>We demonstrate the stabilizing nature of the expanded system by looking at condition numbers for a sequence of wave numbers. We compare the condition number of the stabilized system with the condition number that results from discretization of the classical EFIE equation.</p>
+<p>We achieve a stabilization for the low frequency range at the cost of a larger system of equations. It is important to note that the stabilized system has a one dimensional kernel that must be explicitly considered.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">netgen.meshing</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">meshing</span>
@@ -560,61 +575,25 @@ Q_{\kappa}^{\top} &amp; \kappa^{2} V_{\kappa}
 
 <span class="n">prev_cond_stab</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">prev_cond_class</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">show_plots</span> <span class="o">=</span> <span class="kc">False</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">((</span><span class="n">k_stab</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">cond_stab</span><span class="p">,</span> <span class="n">lams_stab</span><span class="p">),</span> <span class="p">(</span><span class="n">k_class</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">cond_class</span><span class="p">,</span> <span class="n">lams_class</span><span class="p">))</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">results_stabilized</span><span class="p">,</span> <span class="n">results_classical</span><span class="p">)):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;kappa: </span><span class="si">{</span><span class="n">k_stab</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stabilized: cond = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cond_stab</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;classical: cond = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cond_class</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">prev_cond_stab</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stabilized: ratio = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cond_stab</span><span class="o">/</span><span class="n">prev_cond_stab</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, cond = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cond_stab</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, prev_cond = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">prev_cond_stab</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;classical: ratio = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cond_class</span><span class="o">/</span><span class="n">prev_cond_class</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, cond = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cond_class</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, prev_cond = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">prev_cond_class</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="n">plot_lams</span><span class="p">(</span><span class="n">lams_stab</span><span class="p">,</span> <span class="n">lams_class</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;kappa=</span><span class="si">{</span><span class="n">k_stab</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="n">prev_cond_stab</span> <span class="o">=</span> <span class="n">cond_stab</span>
-    <span class="n">prev_cond_class</span> <span class="o">=</span> <span class="n">cond_class</span>
+<span class="k">if</span> <span class="n">show_plots</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">((</span><span class="n">k_stab</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">cond_stab</span><span class="p">,</span> <span class="n">lams_stab</span><span class="p">),</span> <span class="p">(</span><span class="n">k_class</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">cond_class</span><span class="p">,</span> <span class="n">lams_class</span><span class="p">))</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">results_stabilized</span><span class="p">,</span> <span class="n">results_classical</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;kappa: </span><span class="si">{</span><span class="n">k_stab</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stabilized: cond = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cond_stab</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;classical: cond = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cond_class</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+        <span class="k">if</span> <span class="n">prev_cond_stab</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stabilized: ratio = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cond_stab</span><span class="o">/</span><span class="n">prev_cond_stab</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, cond = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cond_stab</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, prev_cond = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">prev_cond_stab</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;classical: ratio = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cond_class</span><span class="o">/</span><span class="n">prev_cond_class</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, cond = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cond_class</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">, prev_cond = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">prev_cond_class</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+        <span class="n">plot_lams</span><span class="p">(</span><span class="n">lams_stab</span><span class="p">,</span> <span class="n">lams_class</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;kappa=</span><span class="si">{</span><span class="n">k_stab</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+        <span class="n">prev_cond_stab</span> <span class="o">=</span> <span class="n">cond_stab</span>
+        <span class="n">prev_cond_class</span> <span class="o">=</span> <span class="n">cond_class</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa: 5.0
-stabilized: cond = 53353.268
-classical: cond = 533.62
-</pre></div>
-</div>
-<img alt="../_images/d307a642806214664d4fa2795bffbbac7e6d93b8af7a6ebe6d9c0d9c9e8ed182.png" src="../_images/d307a642806214664d4fa2795bffbbac7e6d93b8af7a6ebe6d9c0d9c9e8ed182.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa: 0.5
-stabilized: ratio = 0.026, cond = 1369.86, prev_cond = 53353.268
-classical: ratio = 18.933, cond = 10103.077, prev_cond = 533.62
-</pre></div>
-</div>
-<img alt="../_images/0e673f8aea2ed98c621d0c98e336b6f990a4f26d3688779295707710d1f55efa.png" src="../_images/0e673f8aea2ed98c621d0c98e336b6f990a4f26d3688779295707710d1f55efa.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa: 0.05
-stabilized: ratio = 0.886, cond = 1214.124, prev_cond = 1369.86
-classical: ratio = 100.193, cond = 1012254.071, prev_cond = 10103.077
-</pre></div>
-</div>
-<img alt="../_images/3a5bfad547d1933add36e532dd44123faf9da86e8094b55c73bf6f8d99cf28d3.png" src="../_images/3a5bfad547d1933add36e532dd44123faf9da86e8094b55c73bf6f8d99cf28d3.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa: 0.005
-stabilized: ratio = 1.061, cond = 1288.441, prev_cond = 1214.124
-classical: ratio = 100.002, cond = 101227364.255, prev_cond = 1012254.071
-</pre></div>
-</div>
-<img alt="../_images/6870de67af6b669c87e499e8c212e600b0ecb335b8f3a434e114ce2495b91f97.png" src="../_images/6870de67af6b669c87e499e8c212e600b0ecb335b8f3a434e114ce2495b91f97.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa: 0.0005
-stabilized: ratio = 1.0, cond = 1288.426, prev_cond = 1288.441
-classical: ratio = 100.0, cond = 10122738420.642, prev_cond = 101227364.255
-</pre></div>
-</div>
-<img alt="../_images/48c25f61d5c3174b1bd3d6b2bf8c6bacc1957ea6fc8b83dee7b6a6dcbfde220f.png" src="../_images/48c25f61d5c3174b1bd3d6b2bf8c6bacc1957ea6fc8b83dee7b6a6dcbfde220f.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa: 5e-05
-stabilized: ratio = 1.0, cond = 1288.426, prev_cond = 1288.426
-classical: ratio = 100.0, cond = 1012273601565.102, prev_cond = 10122738420.642
-</pre></div>
-</div>
-<img alt="../_images/96dfd7078c0da18cb21c9d3fd554b8b1e3a884660026b5383ef608169d501bd3.png" src="../_images/96dfd7078c0da18cb21c9d3fd554b8b1e3a884660026b5383ef608169d501bd3.png" />
 </div>
 </div>
 <p>We notice that the condition number of the classical solution grows with <span class="math notranslate nohighlight">\(O(\kappa^{-2})\)</span> whilst the condition number of the stabilized formulation stays constant.</p>
