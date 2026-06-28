@@ -394,15 +394,16 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="nearfield-potential-evaluation">
 <h1>Nearfield Potential Evaluation<a class="headerlink" href="#nearfield-potential-evaluation" title="Link to this heading">#</a></h1>
-<p>After computing the density on the surface, the potential
-$<span class="math notranslate nohighlight">\(
+<p>After computing the density on the surface, the potential</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 u(x)=\int_{\Gamma}G(x,y)\,\rho(y)\,dy, \qquad x \in \Omega \setminus \Gamma,
-\)</span>$</p>
+\end{align*}\]</div>
 <p>away from or close to the boundary needs to be evaluated.</p>
 <p>For target points close to the surface, the kernel is nearly singular. Fixed order quadrature and pure farfield expansions lose accuracy exactly where the visualized potential is often most interesting.</p>
 <section id="local-geometry">
 <h2>Local Geometry<a class="headerlink" href="#local-geometry" title="Link to this heading">#</a></h2>
-<p>For a close triangular source element <span class="math notranslate nohighlight">\(\phi(\widehat T)\)</span>, NGSolve projects the target point onto the reference triangle and builds a tangent triangle at the projected point:</p>
+<p>For a close triangular source element <span class="math notranslate nohighlight">\(\phi(\widehat T)\)</span>, we project the target point onto the reference triangle and build a tangent triangle at the projected point:</p>
 <div class="math notranslate nohighlight">
 \[
 \widehat x_0=\operatorname*{arg\,min}_{\widehat x\in\widehat T}|x-\phi(\widehat x)|,
@@ -440,7 +441,7 @@ G(x,\phi(\widehat y))\,\widehat\rho(\widehat y)\,J(\widehat y)
 \Big)d\widehat y.
 \end{aligned}
 \end{split}\]</div>
-<p>The tangent triangle captures the leading local singularity. For the Laplace kernel <span class="math notranslate nohighlight">\(G_0(x,y)=\frac{1}{(4\pi|x-y|)}\)</span> this cancels the leading <span class="math notranslate nohighlight">\(\frac{1}{r}\)</span> behavior, leaving a bounded remainder for standard quadrature. For Helmholtz,</p>
+<p>The tangent triangle captures the leading local singularity. For the Laplace kernel <span class="math notranslate nohighlight">\(G_0(x,y)=\frac{1}{4\pi|x-y|}\)</span> this cancels the leading <span class="math notranslate nohighlight">\(\frac{1}{r}\)</span> behavior, leaving a bounded remainder for standard quadrature. For Helmholtz,</p>
 <div class="math notranslate nohighlight">
 \[
 G_k(x,y)=\frac{e^{ik|x-y|}}{4\pi|x-y|}
